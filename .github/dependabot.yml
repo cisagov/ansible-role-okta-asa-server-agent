@@ -24,10 +24,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   # Managed by cisagov/ansible-role-okta-asa-server-agent
-    #   - dependency-name: "ansible"
-    #   - dependency-name: "ansible-lint"
+    ignore:
+      # Managed by cisagov/skeleton-ansible-role
+      - dependency-name: "ansible"
+      - dependency-name: "ansible-lint"
 
   - package-ecosystem: "terraform"
     directory: "/"

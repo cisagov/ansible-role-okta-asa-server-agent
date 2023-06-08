@@ -1,0 +1,27 @@
+---
+# Setup for installing Okta ASA (sftd) on Debian
+#
+# https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+
+- name: Install curl
+  ansible.builtin.package:
+    name:
+      - curl
+      - gnupg
+
+- name: Get Okta ASA repo GPG key
+  ansible.builtin.shell:
+    cmd: >-
+      curl --fail --silent --show-error --location
+      https://dist.scaleft.com/GPG-KEY-OktaPAM-2023 |
+      gpg --dearmor --output
+      /usr/share/keyrings/oktapam-2023-archive-keyring.gpg
+    creates: /usr/share/keyrings/oktapam-2023-archive-keyring.gpg
+
+- name: Add the Okta ASA repo
+  ansible.builtin.copy:
+    content: >-
+      deb [signed-by=/usr/share/keyrings/oktapam-2023-archive-keyring.gpg]
+      https://dist.scaleft.com/repos/deb {{ ansible_distribution_release }}
+      okta
+    dest: /etc/apt/sources.list.d/oktapam-stable.list

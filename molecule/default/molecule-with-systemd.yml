@@ -10,15 +10,17 @@ dependency:
 driver:
   name: docker
 platforms:
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: geerlingguy/docker-amazonlinux2023-ansible:latest
-    name: amazonlinux2023-systemd
-    platform: amd64
-    pre_build_image: yes
-    privileged: yes
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Okta ASA server agent does not yet support Amazon Linux 2023:
+  # https://dist.scaleft.com/repos/rpm/stable/amazonlinux/
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: geerlingguy/docker-amazonlinux2023-ansible:latest
+  #   name: amazonlinux2023-systemd
+  #   platform: amd64
+  #   pre_build_image: yes
+  #   privileged: yes
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: geerlingguy/docker-debian10-ansible:latest
@@ -37,24 +39,29 @@ platforms:
     privileged: yes
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: cisagov/docker-debian12-ansible:latest
-    name: debian12-systemd
-    platform: amd64
-    pre_build_image: yes
-    privileged: yes
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: cisagov/docker-kali-ansible:latest
-    name: kali-systemd
-    platform: amd64
-    pre_build_image: yes
-    privileged: yes
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Debian Testing is not supported by Okta ASA server agent:
+  # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: cisagov/docker-debian12-ansible:latest
+  #   name: debian12-systemd
+  #   platform: amd64
+  #   pre_build_image: yes
+  #   privileged: yes
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Debian Testing (and hence also Kali) is not supported by Okta ASA
+  # server agent:
+  # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: cisagov/docker-kali-ansible:latest
+  #   name: kali-systemd
+  #   platform: amd64
+  #   pre_build_image: yes
+  #   privileged: yes
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: geerlingguy/docker-fedora37-ansible:latest

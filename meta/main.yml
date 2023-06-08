@@ -1,11 +1,14 @@
 ---
 dependencies: []
 galaxy_info:
-  author: First Last
+  author: Shane Frasier
   company: CISA Cyber Assessments
-  description: Skeleton Ansible role
+  description: Ansible role for installing Okta ASA server agent (sftd)
   galaxy_tags:
-    - skeleton
+    - asa
+    - okta
+    - scaleft
+    - sftd
   license: CC0
   # With the release of version 2.10, Ansible finally correctly
   # identifies Kali Linux as being the Kali distribution of the Debian
@@ -15,23 +18,30 @@ galaxy_info:
   min_ansible_version: "2.10"
   namespace: cisagov
   platforms:
-    - name: Amazon Linux
-      versions:
-        - "2023"
+    # Okta ASA server agent does not yet support Amazon Linux 2023:
+    # https://dist.scaleft.com/repos/rpm/stable/amazonlinux/
+    # - name: Amazon Linux
+    #   versions:
+    #     - "2023"
     - name: Debian
       versions:
         - buster
         - bullseye
-        - bookworm
+        # Debian Testing is not supported by Okta ASA server agent:
+        # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+        # - bookworm
     - name: Fedora
       versions:
         - "37"
         - "38"
-    - name: Kali
-      versions:
-        - "2023"
+    # Debian Testing (and hence Kali) is not supported by Okta ASA
+    # server agent:
+    # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+    # - name: Kali
+    #   versions:
+    #     - "2023"
     - name: Ubuntu
       versions:
         - focal
         - jammy
-  role_name: skeleton
+  role_name: okta_asa

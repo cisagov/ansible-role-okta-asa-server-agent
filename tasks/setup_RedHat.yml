@@ -1,0 +1,21 @@
+---
+# Setup for installing Okta ASA (sftd) on RedHat
+#
+# https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-redhat.htm
+
+- name: Import Okta ASA repo GPG key
+  ansible.builtin.rpm_key:
+    fingerprint: A3A9 03C2 9B5C AF75 34B9 F393 1983 7E37 B896 6AE8
+    key: https://dist.scaleft.com/GPG-KEY-OktaPAM-2023
+
+- name: Add the Okta ASA repo
+  ansible.builtin.copy:
+    content: |
+      [oktapam-stable]
+      name=Okta PAM Stable - {{ ansible_distribution }} {{ ansible_distribution_major_version }}
+      baseurl=https://dist.scaleft.com/repos/rpm/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/$basearch
+      gpgcheck=1
+      repo_gpgcheck=1
+      enabled=1
+      gpgkey=https://dist.scaleft.com/GPG-KEY-OktaPAM-2023
+    dest: /etc/yum.repos.d/oktapam-stable.repo
