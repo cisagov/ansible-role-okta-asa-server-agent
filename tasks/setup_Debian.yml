@@ -10,13 +10,19 @@
       - gnupg
 
 - name: Get Okta ASA repo GPG key
-  ansible.builtin.shell:
+  # ansible-lint would prefer that I use the get_url or uri modules
+  # instead of curl here, but I want to follow the instructions in the
+  # link above.  That is why I am noqa-ing the
+  # command-instead-of-module warning from ansible-lint.
+  ansible.builtin.shell: # noqa command-instead-of-module
     cmd: >-
+      set -o pipefail &&
       curl --fail --silent --show-error --location
       https://dist.scaleft.com/GPG-KEY-OktaPAM-2023 |
       gpg --dearmor --output
       /usr/share/keyrings/oktapam-2023-archive-keyring.gpg
     creates: /usr/share/keyrings/oktapam-2023-archive-keyring.gpg
+    executable: /bin/bash
 
 - name: Add the Okta ASA repo
   ansible.builtin.copy:
