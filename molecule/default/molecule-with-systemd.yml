@@ -71,15 +71,17 @@ platforms:
     privileged: yes
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: geerlingguy/docker-fedora38-ansible:latest
-    name: fedora38-systemd
-    platform: amd64
-    pre_build_image: yes
-    privileged: yes
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Okta ASA server agent does not yet support Fedora 38:
+  # https://dist.scaleft.com/repos/rpm/stable/fedora/
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: geerlingguy/docker-fedora38-ansible:latest
+  #   name: fedora38-systemd
+  #   platform: amd64
+  #   pre_build_image: yes
+  #   privileged: yes
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: geerlingguy/docker-ubuntu2004-ansible:latest
