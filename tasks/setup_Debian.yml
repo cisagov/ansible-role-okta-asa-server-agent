@@ -31,3 +31,4 @@
       https://dist.scaleft.com/repos/deb {{ ansible_distribution_release }}
       okta
     dest: /etc/apt/sources.list.d/oktapam-stable.list
+    mode: 0600

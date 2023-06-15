@@ -19,3 +19,4 @@
       enabled=1
       gpgkey=https://dist.scaleft.com/GPG-KEY-OktaPAM-2023
     dest: /etc/yum.repos.d/oktapam-stable.repo
+    mode: 0600
