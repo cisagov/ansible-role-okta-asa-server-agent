@@ -32,15 +32,16 @@ galaxy_info:
       versions:
         - buster
         - bullseye
+        - bookworm
         # Debian Testing is not supported by Okta ASA server agent:
         # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
-        # - bookworm
-    - name: Fedora
-      versions:
-        - "37"
-        # Okta ASA server agent does not yet support Fedora 38:
-        # https://dist.scaleft.com/repos/rpm/stable/fedora/
-        # - "38"
+        # - trixie
+    # Okta ASA server agent does not yet support Fedora 38 or 39:
+    # https://dist.scaleft.com/repos/rpm/stable/fedora/
+    # - name: Fedora
+    #   versions:
+    #     - "38"
+    #     - "39"
     # Debian Testing (and hence Kali) is not supported by Okta ASA
     # server agent:
     # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
