@@ -8,12 +8,18 @@
     fingerprint: A3A9 03C2 9B5C AF75 34B9 F393 1983 7E37 B896 6AE8
     key: https://dist.scaleft.com/GPG-KEY-OktaPAM-2023
 
+- name: >
+    Set a separate fact to use in place of ansible_distribution where
+    we tweak the value for Amazon Linux
+  ansible.builtin.set_fact:
+    ansible_distribution_tweaked: "{{ (ansible_distribution | lower == 'amazon') | ternary(ansible_distribution + 'Linux', ansible_distribution) }}"
+
 - name: Add the Okta ASA repo
   ansible.builtin.copy:
     content: |
       [oktapam-stable]
-      name=Okta PAM Stable - {{ ansible_distribution }} {{ ansible_distribution_major_version }}
-      baseurl=https://dist.scaleft.com/repos/rpm/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/$basearch
+      name=Okta PAM Stable - {{ ansible_distribution_tweaked }} {{ ansible_distribution_major_version }}
+      baseurl=https://dist.scaleft.com/repos/rpm/stable/{{ ansible_distribution_tweaked | lower }}/{{ ansible_distribution_major_version }}/$basearch
       gpgcheck=1
       repo_gpgcheck=1
       enabled=1

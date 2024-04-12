@@ -23,11 +23,9 @@ galaxy_info:
   min_ansible_version: "2.10"
   namespace: cisagov
   platforms:
-    # Okta ASA server agent does not yet support Amazon Linux 2023:
-    # https://dist.scaleft.com/repos/rpm/stable/amazonlinux/
-    # - name: Amazon Linux
-    #   versions:
-    #     - "2023"
+    - name: Amazon Linux
+      versions:
+        - "2023"
     - name: Debian
       versions:
         - buster
