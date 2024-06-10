@@ -168,12 +168,37 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         if: env.RUN_TMATE
   test:
+    name: >-
+      test (${{ matrix.scenario }}) -
+      ${{ matrix.platform }}-${{ matrix.architecture }}
     needs:
       - diagnostics
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        architecture:
+          - amd64
+          - arm64
+        platform:
+          - amazonlinux2023-systemd
+          - debian10-systemd
+          - debian11-systemd
+          - debian12-systemd
+          # Debian Testing is not supported by Okta ASA server agent:
+          # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+          # - debian13-systemd
+          # Okta ASA server agent does not yet support Fedora 39 or 40:
+          # https://dist.scaleft.com/repos/rpm/stable/fedora/
+          # - fedora39-systemd
+          # - fedora40-systemd
+          # Debian Testing (and hence also Kali) is not supported by Okta ASA
+          # server agent:
+          # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+          # - kali-systemd
+          - ubuntu-20-systemd
+          - ubuntu-22-systemd
+          - ubuntu-24-systemd
         scenario:
           - default
     steps:
@@ -204,8 +229,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade --requirement requirements-test.txt
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Run molecule tests
-        run: molecule test --scenario-name ${{ matrix.scenario }}
+        run: >-
+          molecule test
+          --platform-name ${{ matrix.platform }}-${{ matrix.architecture }}
+          --scenario-name ${{ matrix.scenario }}
       - name: Setup tmate debug session
         uses: mxschmitt/action-tmate@v3
         if: env.RUN_TMATE
