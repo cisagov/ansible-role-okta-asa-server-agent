@@ -76,78 +76,85 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/cisagov/docker-debian13-ansible:latest
-    name: debian13-systemd-amd64
-    platform: amd64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/cisagov/docker-debian13-ansible:latest
-    name: debian13-systemd-arm64
-    platform: arm64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/cisagov/docker-kali-ansible:latest
-    name: kali-systemd-amd64
-    platform: amd64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/cisagov/docker-kali-ansible:latest
-    name: kali-systemd-arm64
-    platform: arm64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/geerlingguy/docker-fedora39-ansible:latest
-    name: fedora39-systemd-amd64
-    platform: amd64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/geerlingguy/docker-fedora39-ansible:latest
-    name: fedora39-systemd-arm64
-    platform: arm64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/geerlingguy/docker-fedora40-ansible:latest
-    name: fedora40-systemd-amd64
-    platform: amd64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/geerlingguy/docker-fedora40-ansible:latest
-    name: fedora40-systemd-arm64
-    platform: arm64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Debian Testing is not supported by Okta ASA server agent:
+  # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/cisagov/docker-debian13-ansible:latest
+  #   name: debian13-systemd-amd64
+  #   platform: amd64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/cisagov/docker-debian13-ansible:latest
+  #   name: debian13-systemd-arm64
+  #   platform: arm64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Debian Testing (and hence also Kali) is not supported by Okta ASA
+  # server agent:
+  # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/cisagov/docker-kali-ansible:latest
+  #   name: kali-systemd-amd64
+  #   platform: amd64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/cisagov/docker-kali-ansible:latest
+  #   name: kali-systemd-arm64
+  #   platform: arm64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Okta ASA server agent does not yet support Fedora 39 or 40:
+  # https://dist.scaleft.com/repos/rpm/stable/fedora/
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-fedora39-ansible:latest
+  #   name: fedora39-systemd-amd64
+  #   platform: amd64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-fedora39-ansible:latest
+  #   name: fedora39-systemd-arm64
+  #   platform: arm64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-fedora40-ansible:latest
+  #   name: fedora40-systemd-amd64
+  #   platform: amd64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-fedora40-ansible:latest
+  #   name: fedora40-systemd-arm64
+  #   platform: arm64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-fedora41-ansible:latest
@@ -202,24 +209,26 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
-    name: ubuntu-24-systemd-amd64
-    platform: amd64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  - cgroupns_mode: host
-    command: /lib/systemd/systemd
-    image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
-    name: ubuntu-24-systemd-arm64
-    platform: arm64
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # Ubuntu Noble is not yet supported by Okta ASA server agent:
+  # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
+  #   name: ubuntu-24-systemd-amd64
+  #   platform: amd64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
+  #   name: ubuntu-24-systemd-arm64
+  #   platform: arm64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
 provisioner:
   name: ansible
   config_options:
