@@ -12,7 +12,9 @@
     Set a separate fact to use in place of ansible_distribution where
     we tweak the value for Amazon Linux
   ansible.builtin.set_fact:
-    ansible_distribution_tweaked: "{{ (ansible_distribution | lower == 'amazon') | ternary(ansible_distribution + 'Linux', ansible_distribution) }}"
+    ansible_distribution_tweaked: >-
+      {{ (ansible_distribution | lower == 'amazon') |
+      ternary(ansible_distribution + 'Linux', ansible_distribution) }}
 
 - name: Add the Okta ASA repo
   ansible.builtin.copy:
