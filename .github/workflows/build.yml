@@ -234,9 +234,7 @@ jobs:
           # - kali-systemd
           - ubuntu-20-systemd
           - ubuntu-22-systemd
-          # Ubuntu Noble is not yet supported by Okta ASA server agent:
-          # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
-          # - ubuntu-24-systemd
+          - ubuntu-24-systemd
         scenario:
           - default
     steps:
