@@ -51,8 +51,6 @@ galaxy_info:
       versions:
         - focal
         - jammy
-        # Ubuntu Noble is not yet supported by Okta ASA server agent:
-        # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
-        # - noble
+        - noble
   role_name: okta_asa
   standalone: true
