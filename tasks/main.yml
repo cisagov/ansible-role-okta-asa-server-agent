@@ -25,5 +25,5 @@
 
 - name: Enable sftd
   ansible.builtin.service:
-    name: sftd
     enabled: yes
+    name: sftd
