@@ -25,10 +25,9 @@
     executable: /bin/bash
 
 - name: Add the Okta ASA repo
-  ansible.builtin.copy:
-    content: >-
+  ansible.builtin.apt_repository:
+    filename: oktapam-stable
+    repo: >-
       deb [signed-by=/usr/share/keyrings/oktapam-2023-archive-keyring.gpg]
       https://dist.scaleft.com/repos/deb {{ ansible_distribution_release }}
       okta
-    dest: /etc/apt/sources.list.d/oktapam-stable.list
-    mode: u=rw,g=,o=
