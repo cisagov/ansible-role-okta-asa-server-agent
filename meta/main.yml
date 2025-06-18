@@ -34,13 +34,12 @@ galaxy_info:
         # Debian Testing is not supported by Okta ASA server agent:
         # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
         # - trixie
-    # Okta ASA server agent does not yet support Fedora 39-41:
+    # Okta ASA server agent does not yet support Fedora 41-42:
     # https://dist.scaleft.com/repos/rpm/stable/fedora/
     # - name: Fedora
     #   versions:
-    #     - "39"
-    #     - "40"
     #     - "41"
+    #     - "42"
     # Debian Testing (and hence Kali) is not supported by Okta ASA
     # server agent:
     # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
@@ -49,7 +48,6 @@ galaxy_info:
     #     - "2023"
     - name: Ubuntu
       versions:
-        - focal
         - jammy
         - noble
   role_name: okta_asa

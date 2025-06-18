@@ -225,14 +225,12 @@ jobs:
           # - debian13-systemd
           # Okta ASA server agent does not yet support Fedora 39-41:
           # https://dist.scaleft.com/repos/rpm/stable/fedora/
-          # - fedora39-systemd
-          # - fedora40-systemd
           # - fedora41-systemd
+          # - fedora42-systemd
           # Debian Testing (and hence also Kali) is not supported by Okta ASA
           # server agent:
           # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
           # - kali-systemd
-          - ubuntu-20-systemd
           - ubuntu-22-systemd
           - ubuntu-24-systemd
         scenario:
