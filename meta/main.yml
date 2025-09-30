@@ -31,7 +31,9 @@ galaxy_info:
         - buster
         - bullseye
         - bookworm
-        - trixie
+        # Debian Trixie is not supported by Okta ASA server agent:
+        # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+        # - trixie
         # Debian Testing is not supported by Okta ASA server agent:
         # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
         # - forky
