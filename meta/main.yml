@@ -31,9 +31,12 @@ galaxy_info:
         - buster
         - bullseye
         - bookworm
-        # Debian Testing is not supported by Okta ASA server agent:
+        # Debian Trixie is not supported by Okta ASA server agent:
         # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
         # - trixie
+        # Debian Testing is not supported by Okta ASA server agent:
+        # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
+        # - forky
     # Okta ASA server agent does not yet support Fedora 41-42:
     # https://dist.scaleft.com/repos/rpm/stable/fedora/
     # - name: Fedora
