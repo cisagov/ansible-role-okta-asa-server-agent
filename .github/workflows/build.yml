@@ -100,7 +100,7 @@ jobs:
           permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
       - id: setup-env
         uses: cisagov/setup-env-github-action@v1
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: setup-python
         uses: actions/setup-python@v6
         with:
@@ -226,10 +226,10 @@ jobs:
           # Debian Testing is not supported by Okta ASA server agent:
           # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
           # - debian14-systemd
-          # Okta ASA server agent does not yet support Fedora 41-42:
+          # Okta ASA server agent does not yet support Fedora 42-43:
           # https://dist.scaleft.com/repos/rpm/stable/fedora/
-          # - fedora41-systemd
           # - fedora42-systemd
+          # - fedora43-systemd
           # Debian Testing (and hence also Kali) is not supported by Okta ASA
           # server agent:
           # https://help.okta.com/asa/en-us/Content/Topics/Adv_Server_Access/docs/sftd-ubuntu.htm
@@ -267,7 +267,7 @@ jobs:
           permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
       - id: setup-env
         uses: cisagov/setup-env-github-action@v1
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: setup-python
         uses: actions/setup-python@v6
         with:

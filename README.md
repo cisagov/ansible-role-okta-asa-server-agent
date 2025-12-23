@@ -1,6 +1,7 @@
 # ansible-role-okta-asa-server-agent #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-okta-asa-server-agent/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-okta-asa-server-agent/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-okta-asa-server-agent)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-okta-asa-server-agent/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-okta-asa-server-agent/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role for installing the [Okta Advanced Server
