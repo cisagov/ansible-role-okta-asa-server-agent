@@ -17,21 +17,17 @@
       ternary(ansible_distribution + 'Linux', ansible_distribution) }}
 
 - name: Add the Okta ASA repo
-  ansible.builtin.copy:
-    # yamllint complains about the length of a few of the lines below,
+  ansible.builtin.yum_repository:
+    # yamllint complains about the length of a couple of the lines below,
     # but there is no way to shorten them.
     #
     # yamllint disable rule:line-length
-    content: |
-      [oktapam-stable]
-      name=Okta PAM Stable - {{ ansible_distribution_tweaked }} {{ ansible_distribution_major_version }}
-      baseurl=https://dist.scaleft.com/repos/rpm/stable/{{ ansible_distribution_tweaked | lower }}/{{ ansible_distribution_major_version }}/$basearch
-      gpgcheck=1
-      repo_gpgcheck=1
-      enabled=1
-      gpgkey=https://dist.scaleft.com/GPG-KEY-OktaPAM-2023
+    baseurl: https://dist.scaleft.com/repos/rpm/stable/{{ ansible_distribution_tweaked | lower }}/{{ ansible_distribution_major_version }}/$basearch
+    description: Okta PAM Stable - {{ ansible_distribution_tweaked }} {{ ansible_distribution_major_version }}
     # Re-enable the line-length yamllint rule.
     #
     # yamllint enable rule:line-length
-    dest: /etc/yum.repos.d/oktapam-stable.repo
-    mode: u=rw,g=,o=
+    gpgcheck: true
+    gpgkey: https://dist.scaleft.com/GPG-KEY-OktaPAM-2023
+    name: oktapam-stable
+    repo_gpgcheck: true
