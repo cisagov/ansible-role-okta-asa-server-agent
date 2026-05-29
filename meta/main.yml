@@ -53,5 +53,6 @@ galaxy_info:
       versions:
         - jammy
         - noble
+        - resolute
   role_name: okta_asa
   standalone: true
